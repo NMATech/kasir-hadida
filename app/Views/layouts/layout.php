@@ -7,9 +7,10 @@
     <title>Kasir Hadida</title>
 
     <link rel="stylesheet" href="<?= base_url('assets/css/output.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/DataTables/datatables.min.css') ?>">
 </head>
 
-<body class="bg-[#efefef] flex">
+<body class="bg-[#efefef] flex font-mono">
     <?= $this->include('components/sidebar'); ?>
 
     <main id="container-content" class="w-[85%] h-svh">
@@ -20,7 +21,11 @@
         </div>
     </main>
 
+    <script src="<?= base_url('assets/DataTables/datatables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/sweetalert.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/index.js') ?>"></script>
+    <script src="<?= base_url('assets/js/barang.js') ?>"></script>
+    <script src="<?= base_url('assets/js/modal.js') ?>"></script>
 </body>
 
 </html>

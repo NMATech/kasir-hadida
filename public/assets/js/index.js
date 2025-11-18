@@ -1,6 +1,7 @@
 const containerContent = document.getElementById("container-content");
 const sidebar = document.getElementById("sidebar");
 const iconExpand = document.getElementById("icon-expand");
+const cardMenuBarang = document.getElementById("cardMenuBarang");
 
 function toggleExpandSidebar() {
   sidebar.classList.toggle("hidden");
@@ -19,4 +20,9 @@ function toggleExpandSidebar() {
       "m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
     );
   }
+}
+
+function showMenuBarang() {
+  cardMenuBarang.classList.toggle("hidden");
+  cardMenuBarang.classList.toggle("flex");
 }

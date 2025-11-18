@@ -9,3 +9,4 @@ $routes->get('/', 'Home::index');
 $routes->get('/barang', 'Home::barangPage');
 $routes->get('/transaksi', 'Home::transaksiPage');
 $routes->get('/penjualan', 'Home::penjualanPage');
+$routes->get('/kategori', 'Home::kategoriPage');

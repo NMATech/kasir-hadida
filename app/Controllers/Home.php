@@ -39,4 +39,13 @@ class Home extends BaseController
 
         return view('pages/penjualan', $data);
     }
+
+    public function kategoriPage()
+    {
+        $data = [
+            'title' => 'Kategori Barang'
+        ];
+
+        return view('pages/kategori', $data);
+    }
 }
