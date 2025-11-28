@@ -9,11 +9,11 @@
         </div>
         <h4 class="text-2xl font-bold text-center">Tambah Kategori</h4>
 
-        <form action="">
+        <form action="<?= base_url('/add/kategori') ?>" method="post">
             <div class="flex flex-col gap-3 mt-5">
                 <div class="flex flex-col gap-2">
                     <p>Nama Kategori</p>
-                    <input type="text" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input type="text" id="create_name_category" name="create_name_category" class="w-full border border-gray-400 rounded-lg p-2">
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="w-full bg-emerald-500 p-2 rounded-lg text-white hover:scale-105">

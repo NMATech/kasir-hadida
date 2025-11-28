@@ -26,19 +26,24 @@
         </thead>
 
         <tbody class="divide-y divide-gray-200">
-            <tr class="hover:bg-gray-100">
-                <td class="px-4 py-3" style="text-align: center;">1</td>
-                <td class="px-4 py-3">Makanan & Minuman</td>
-                <td class="flex justify-center items-center gap-3 px-4 py-3">
-                    <button class="px-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600">
-                        Edit
-                    </button>
-                    <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
-                        Delete
-                    </button>
-                </td>
-            </tr>
+            <?php foreach ($category as $idx => $item): ?>
+                <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-3" style="text-align: center;"><?= $idx + 1; ?></td>
+                    <td class="text-center px-4 py-3"><?= $item['category_name']; ?></td>
+                    <td class="flex justify-center items-center gap-3 px-4 py-3">
+                        <button class="px-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600" onclick="showModalEditKategori('<?= $item['id']; ?>', '<?= $item['category_name']; ?>')">
+                            Edit
+                        </button>
+                        <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
+
+<?= $this->include('components/category/modalAddKategoriBarang'); ?>
+<?= $this->include('components/category/modalEditCategory'); ?>
 <?= $this->endSection() ?>

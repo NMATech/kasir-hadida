@@ -2,8 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
+
 class Home extends BaseController
 {
+    protected $categoryModel;
+
+    public function __construct()
+    {
+        $this->categoryModel = new Category();
+    }
+
     public function index(): string
     {
         $data = [
@@ -42,8 +51,12 @@ class Home extends BaseController
 
     public function kategoriPage()
     {
+        helper('text');
+        $category = $this->categoryModel->getAllData();
+
         $data = [
-            'title' => 'Kategori Barang'
+            'title' => 'Kategori Barang',
+            'category' => $category
         ];
 
         return view('pages/kategori', $data);

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Barang extends Model
+class Category extends Model
 {
     protected $table = 'category_barang';
     protected $primaryKey = 'id';
@@ -23,9 +23,38 @@ class Barang extends Model
 
     public function getData()
     {
-        $datas = $this->builder->get()->getResultArray();
-        $data = $datas[0];
+        $datas = $this->builder->get()->getRowArray();
+        $data = $datas;
 
         return $data;
+    }
+
+    public function getAllData()
+    {
+        $datas = $this->builder->get()->getResultArray();
+
+        return $datas;
+    }
+
+    public function addData($namaBarang)
+    {
+        helper('text');
+        $id = random_string('alnum', 16);
+
+        $data = [
+            'id' => $id,
+            'category_name' => $namaBarang,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $this->builder->insert($data);
+
+        return redirect()->back();
+    }
+
+    public function editData($categoryId, $newName)
+    {
+        $this->builder->where('id', $categoryId)->set('category_name', $newName)->update();
     }
 }
