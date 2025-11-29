@@ -63,6 +63,5 @@
 </div>
 
 <?= $this->include('components/modal/createAddBarang'); ?>
-<?= $this->include('components/category/modalCategoryBarang'); ?>
 
 <?= $this->endSection() ?>

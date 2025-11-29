@@ -57,4 +57,9 @@ class Category extends Model
     {
         $this->builder->where('id', $categoryId)->set('category_name', $newName)->update();
     }
+
+    public function deleteData($categoryId)
+    {
+        $this->builder->where('id', $categoryId)->delete();
+    }
 }

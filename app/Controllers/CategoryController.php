@@ -33,4 +33,11 @@ class CategoryController extends BaseController
 
         return redirect()->back()->with('success', 'Berhasil mengedit category baru');
     }
+
+    public function deleteCategory($categoryId)
+    {
+        // hapus data
+        $this->categoryModel->deleteData($categoryId);
+        return redirect()->back()->with('success', 'Berhasil menghapus category!');
+    }
 }

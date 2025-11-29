@@ -34,7 +34,17 @@
                         <button class="px-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600" onclick="showModalEditKategori('<?= $item['id']; ?>', '<?= $item['category_name']; ?>')">
                             Edit
                         </button>
-                        <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
+
+                        <?php
+                        // data untuk di pass ke modal delete
+                        $datas = [
+                            'headline' => 'Kategori',
+                            'nama' => $item['category_name'],
+                            'url' => 'delete/kategori/' . $item['id']
+                        ];
+                        ?>
+
+                        <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600" onclick='showModalDelete(<?= json_encode($datas) ?>)'>
                             Delete
                         </button>
                     </td>

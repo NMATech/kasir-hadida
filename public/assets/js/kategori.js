@@ -3,6 +3,7 @@ const modalCreateAddKategori = document.getElementById(
 );
 const modalEditKategori = document.getElementById("modalEditCategory");
 const inputEditNameCategory = document.getElementById("edit_name_category");
+const formEditCategory = document.getElementById("formEditCategory");
 
 $("#tableCategory").DataTable({
   paging: false,
@@ -28,4 +29,11 @@ function showModalEditKategori(categoryId = null, prevValues = null) {
 
 function setValuesToInput(prevValues) {
   inputEditNameCategory.value = prevValues;
+}
+
+function setActionToFormEditCategory(id) {
+  formEditCategory.setAttribute(
+    "action",
+    `${baseUrlEditCategory}/edit/kategori/${id}`
+  );
 }

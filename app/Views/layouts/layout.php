@@ -16,6 +16,10 @@
     <main id="container-content" class="w-[85%] h-svh">
         <?= $this->include('components/navbar'); ?>
 
+        <!-- modal -->
+        <?= $this->include('components/modal/modalDelete'); ?>
+        <?= $this->include('components/modal/modalSuccess'); ?>
+
         <div class="p-5">
             <?= $this->renderSection('content'); ?>
         </div>

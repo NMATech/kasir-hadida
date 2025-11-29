@@ -9,7 +9,7 @@
         </div>
         <h4 class="text-2xl font-bold text-center">Edit Kategori</h4>
 
-        <form id="formEditCategory" action="<?= base_url('/add/kategori') ?>" method="post">
+        <form id="formEditCategory" method="post">
             <div class="flex flex-col gap-3 mt-5">
                 <div class="flex flex-col gap-2">
                     <p>Nama Kategori</p>
@@ -26,10 +26,5 @@
 </div>
 
 <script>
-    const baseUrl = '<?= base_url() ?>'
-    const formEditCategory = document.getElementById('formEditCategory')
-
-    function setActionToFormEditCategory(id) {
-        formEditCategory.setAttribute('action', `${baseUrl}/edit/kategori/${id}`)
-    }
+    const baseUrlEditCategory = '<?= base_url() ?>'
 </script>
