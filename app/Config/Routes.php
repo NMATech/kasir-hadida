@@ -15,3 +15,7 @@ $routes->get('/kategori', 'Home::kategoriPage');
 $routes->post('/add/kategori', 'CategoryController::addCategory');
 $routes->post('/edit/kategori/(:any)', 'CategoryController::editCategory/$1');
 $routes->post('/delete/kategori/(:any)', 'CategoryController::deleteCategory/$1');
+$routes->get('/get/category-name/(:any)', 'CategoryController::getCategoryName/$1');
+
+// routes barang
+$routes->post('/add/barang', 'BarangController::addBarang');

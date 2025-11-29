@@ -9,27 +9,28 @@
         </div>
         <h4 class="text-2xl font-bold text-center mt-10">Tambah Barang</h4>
 
-        <form action="">
+        <form action="<?= base_url('/add/barang') ?>" method="post">
             <div class="flex flex-col gap-3 mt-5">
                 <div class="flex flex-col gap-2">
                     <p>Nama Barang</p>
-                    <input type="text" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input id="create_name_barang" name="create_name_barang" type="text" class="w-full border border-gray-400 rounded-lg p-2">
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>Kategori Barang</p>
-                    <select type="text" class="w-full border border-gray-400 rounded-lg p-2">
+                    <select id="create_category_id" name="create_category_id" type="text" class="w-full border border-gray-400 rounded-lg p-2">
                         <option value="" selected disabled>Select</option>
-                        <option value="">Makanan</option>
-                        <option value="">Minuman</option>
+                        <?php foreach ($category as $key => $item): ?>
+                            <option value="<?= $item['id'] ?>"><?= $item['category_name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>Harga Modal</p>
-                    <input type="number" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input id="create_modal" name="create_modal" type="number" class="w-full border border-gray-400 rounded-lg p-2">
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>Harga Jual</p>
-                    <input type="number" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input id="create_harga_jual" name="create_harga_jual" type="number" class="w-full border border-gray-400 rounded-lg p-2">
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="w-full bg-emerald-500 p-2 rounded-lg text-white hover:scale-105">

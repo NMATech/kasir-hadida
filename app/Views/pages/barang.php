@@ -17,7 +17,7 @@
         </button>
     </div>
     <div class="rounded-lg shadow mt-[-50px]">
-        <table id="tableBarang" class="min-w-full border border-gray-200 bg-white text-sm">
+        <table id="tableBarang" class="min-w-full border border-gray-200 bg-white text-sm" style="text-align: center;">
             <thead class="bg-sky-500 text-white">
                 <tr>
                     <th class="px-4 py-3 font-medium" style="text-align: center;">No</th>
@@ -31,32 +31,40 @@
             </thead>
 
             <tbody class="divide-y divide-gray-200">
-                <tr class="hover:bg-gray-100">
-                    <td class="px-4 py-3" style="text-align: center;">1</td>
-                    <td class="px-4 py-3">Rinso</td>
-                    <td class="px-4 py-3">Cuci & Baju</td>
-                    <td class="px-4 py-3" style="text-align: center;">5000</td>
-                    <td class="px-4 py-3" style="text-align: center;">5500</td>
-                    <td class="px-4 py-3" style="text-align: center;">500</td>
-                    <td class="flex justify-center items-center px-4 py-3">
-                        <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-100">
-                    <td class="px-4 py-3" style="text-align: center;">2</td>
-                    <td class="px-4 py-3">Indomie</td>
-                    <td class="px-4 py-3">Makanan</td>
-                    <td class="px-4 py-3" style="text-align: center;">3000</td>
-                    <td class="px-4 py-3" style="text-align: center;">3500</td>
-                    <td class="px-4 py-3" style="text-align: center;">500</td>
-                    <td class="flex justify-center items-center px-4 py-3">
-                        <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
+                <?php if ($barang): ?>
+                    <?php foreach ($barang as $key => $item): ?>
+                        <?php
+                        $categoryName = '';
+
+                        foreach ($category as $x) {
+                            if ($x['id'] == $item['category_id']) {
+                                $categoryName = $x['category_name'];
+                                break;
+                            }
+                        }
+                        ?>
+                        <tr class="hover:bg-gray-100">
+                            <td class="px-4 py-3" style="text-align: center;"><?= $key + 1 ?></td>
+                            <td class="px-4 py-3"><?= $item['nama_barang'] ?></td>
+                            <td class="px-4 py-3"><?= $categoryName ?></td>
+                            <td class="px-4 py-3" style="text-align: center;"><?= rtrim(rtrim($item['modal'], '0'), '.') ?></td>
+                            <td class="px-4 py-3" style="text-align: center;"><?= rtrim(rtrim($item['harga_jual'], '0'), '.') ?></td>
+                            <td class="px-4 py-3" style="text-align: center;"><?= rtrim(rtrim($item['keuntungan'], '0'), '.') ?></td>
+                            <td class="flex justify-center items-center gap-3 px-4 py-3">
+                                <button class="px-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600" onclick="">
+                                    Edit
+                                </button>
+                                <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7" class="text-center py-4">No data available</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

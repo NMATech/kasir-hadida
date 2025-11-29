@@ -21,12 +21,11 @@ class Category extends Model
         $this->builder = $this->db->table('category_barang');
     }
 
-    public function getData()
+    public function searchData($categoryId)
     {
-        $datas = $this->builder->get()->getRowArray();
-        $data = $datas;
+        $datas = $this->builder->where('id', $categoryId)->get()->getRowArray();
 
-        return $data;
+        return $datas;
     }
 
     public function getAllData()

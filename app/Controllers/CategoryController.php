@@ -40,4 +40,11 @@ class CategoryController extends BaseController
         $this->categoryModel->deleteData($categoryId);
         return redirect()->back()->with('success', 'Berhasil menghapus category!');
     }
+
+    // api endpoint to get category name by id
+    public function getCategoryName($categoryId)
+    {
+        $data = $this->categoryModel->searchData($categoryId);
+        return $this->response->setJSON($data);
+    }
 }

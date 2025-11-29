@@ -2,15 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Models\Barang;
 use App\Models\Category;
 
 class Home extends BaseController
 {
     protected $categoryModel;
+    protected $barangModel;
 
     public function __construct()
     {
         $this->categoryModel = new Category();
+        $this->barangModel = new Barang();
     }
 
     public function index(): string
@@ -24,8 +27,13 @@ class Home extends BaseController
 
     public function barangPage()
     {
+        $category = $this->categoryModel->getAllData();
+        $barang = $this->barangModel->getAllData();
+
         $data = [
-            'title' => 'Barang'
+            'title' => 'Barang',
+            'category' => $category,
+            'barang' => $barang
         ];
 
         return view('pages/barang', $data);

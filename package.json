@@ -7,6 +7,7 @@
     "test": "tests"
   },
   "dependencies": {
+    "@defuj/bluetooth-print-js": "github:defuj/printer-js",
     "bootstrap": "^5.3.8",
     "sweetalert2": "^11.26.3"
   },
