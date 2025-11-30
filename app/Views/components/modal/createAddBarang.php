@@ -13,11 +13,11 @@
             <div class="flex flex-col gap-3 mt-5">
                 <div class="flex flex-col gap-2">
                     <p>Nama Barang</p>
-                    <input id="create_name_barang" name="create_name_barang" type="text" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input id="create_name_barang" name="create_name_barang" type="text" class="w-full border border-gray-400 rounded-lg p-2" required>
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>Kategori Barang</p>
-                    <select id="create_category_id" name="create_category_id" type="text" class="w-full border border-gray-400 rounded-lg p-2">
+                    <select id="create_category_id" name="create_category_id" type="text" class="w-full border border-gray-400 rounded-lg p-2" required>
                         <option value="" selected disabled>Select</option>
                         <?php foreach ($category as $key => $item): ?>
                             <option value="<?= $item['id'] ?>"><?= $item['category_name'] ?></option>
@@ -25,12 +25,16 @@
                     </select>
                 </div>
                 <div class="flex flex-col gap-2">
+                    <p>Code QR</p>
+                    <input id="create_code_qr" name="create_code_qr" type="text" class="w-full border border-gray-400 rounded-lg p-2" required>
+                </div>
+                <div class="flex flex-col gap-2">
                     <p>Harga Modal</p>
-                    <input id="create_modal" name="create_modal" type="number" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input id="create_modal" name="create_modal" type="number" class="w-full border border-gray-400 rounded-lg p-2" required>
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>Harga Jual</p>
-                    <input id="create_harga_jual" name="create_harga_jual" type="number" class="w-full border border-gray-400 rounded-lg p-2">
+                    <input id="create_harga_jual" name="create_harga_jual" type="number" class="w-full border border-gray-400 rounded-lg p-2" required>
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="w-full bg-emerald-500 p-2 rounded-lg text-white hover:scale-105">

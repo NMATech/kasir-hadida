@@ -31,6 +31,7 @@
     <script src="<?= base_url('assets/js/barang.js') ?>"></script>
     <script src="<?= base_url('assets/js/modal.js') ?>"></script>
     <script src="<?= base_url('assets/js/kategori.js') ?>"></script>
+    <script src="<?= base_url('assets/js/users.js') ?>"></script>
 </body>
 
 </html>

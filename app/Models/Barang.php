@@ -9,7 +9,7 @@ class Barang extends Model
     protected $table = 'barang';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
-    protected $allowedFields = ['id', 'nama_barang', 'category_id', 'modal', 'harga_jual', 'harga_ecer', 'keuntungan', 'keuntungan_ecer', 'created_at', 'updated_at'];
+    protected $allowedFields = ['id', 'nama_barang', 'category_id', 'modal', 'harga_jual', 'code_qr', 'keuntungan', 'created_at', 'updated_at'];
 
     protected $db;
     protected $builder;
@@ -37,6 +37,7 @@ class Barang extends Model
             'id' => $id,
             'nama_barang' => $datas['nama_barang'],
             'category_id' => $datas['category_id'],
+            'code_qr' => $datas['code_qr'],
             'modal' => $datas['modal'],
             'harga_jual' => $datas['harga_jual'],
             'keuntungan' => $datas['harga_jual'] - $datas['modal'],
@@ -45,5 +46,30 @@ class Barang extends Model
         ];
 
         return $this->builder->insert($data);
+    }
+
+    public function updateData($id, $datas)
+    {
+        $data = [
+            'nama_barang' => $datas['nama_barang'],
+            'category_id' => $datas['category_id'],
+            'code_qr' => $datas['code_qr'],
+            'modal' => $datas['modal'],
+            'harga_jual' => $datas['harga_jual'],
+            'keuntungan' => $datas['harga_jual'] - $datas['modal'],
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        return $this->builder->where('id', $id)->update($data);
+    }
+
+    public function deleteData($id)
+    {
+        return $this->builder->where('id', $id)->delete();
+    }
+
+    public function getDataById($id)
+    {
+        return $this->builder->where('id', $id)->get()->getRowArray();
     }
 }

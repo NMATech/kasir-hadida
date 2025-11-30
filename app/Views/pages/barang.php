@@ -1,6 +1,20 @@
 <?= $this->extend('layouts/layout') ?>
 
 <?= $this->section('content') ?>
+
+<!-- Flash Messages -->
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
+
 <div class="flex flex-col">
     <h3 class="text-3xl font-bold"><?= $title; ?></h3>
     <p class="text-sm">15 November 2025</p>
@@ -51,10 +65,20 @@
                             <td class="px-4 py-3" style="text-align: center;"><?= rtrim(rtrim($item['harga_jual'], '0'), '.') ?></td>
                             <td class="px-4 py-3" style="text-align: center;"><?= rtrim(rtrim($item['keuntungan'], '0'), '.') ?></td>
                             <td class="flex justify-center items-center gap-3 px-4 py-3">
-                                <button class="px-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600" onclick="">
+                                <button class="px-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600" onclick="showModalEditBarang('<?= $item['id'] ?>', '<?= $item['nama_barang'] ?>', '<?= $item['category_id'] ?>', '<?= $item['code_qr'] ?>', '<?= $item['modal'] ?>', '<?= $item['harga_jual'] ?>')">
                                     Edit
                                 </button>
-                                <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600">
+
+                                <?php
+                                // data untuk di pass ke modal delete
+                                $datas = [
+                                    'headline' => 'Barang',
+                                    'nama' => $item['nama_barang'],
+                                    'url' => 'delete/barang/' . $item['id']
+                                ];
+                                ?>
+
+                                <button class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600" onclick='showModalDelete(<?= json_encode($datas) ?>)'>
                                     Delete
                                 </button>
                             </td>
@@ -71,5 +95,6 @@
 </div>
 
 <?= $this->include('components/modal/createAddBarang'); ?>
+<?= $this->include('components/barang/modalEditBarang'); ?>
 
 <?= $this->endSection() ?>
